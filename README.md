@@ -3,6 +3,20 @@ SQL Project to analyze student performance and educational outcomes for a school
 
 # School District Performance Analysis
 
+-- Provide a report on the number of students enrolled in each grade level.
+-- This report helps in understanding the distribution of students across different grades, which can assist in resource allocation and planning.
+
+SELECT 
+    grade_level,
+    COUNT(student_id) AS student_count
+FROM 
+    Students
+GROUP BY 
+    grade_level
+ORDER BY 
+    grade_level ASC;
+
+
 
 ## Overview
 This project contains a series of SQL queries designed to analyze student performance, teacher efficiency, class performance, and enrollment trends within a school district. The goal is to extract actionable insights to improve educational outcomes.
@@ -34,8 +48,9 @@ The database includes the following tables:
 1. **Average Number of Students per Class for Each Teacher**
 
    File: [teacher_analysis_1.sql](sql_queries/teacher_analysis_1.sql)
+   
 
-2. **Teacher with the Highest Number of Classes Taught**
+3. **Teacher with the Highest Number of Classes Taught**
 
    File: [teacher_analysis_2.sql](sql_queries/teacher_analysis_2.sql)
 
