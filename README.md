@@ -57,7 +57,7 @@ The database includes the following tables:
 
 2. **Top 5 Students with the Highest Average Grades**
 
-  ```sql
+  
 -- Find the top 5 students with the highest average grades.
 -- This report helps in identifying the top-performing students based on their average grades.
 
@@ -79,7 +79,26 @@ LIMIT 5;
 
 This report helps in evaluating the teacher's class sizes and teaching load.
 
+### Task 2: Teacher Analysis
+
+#### 2. Teacher with the Highest Number of Classes Taught
+
+This report helps in understanding which teacher has the highest teaching load.
+
 ```sql
+-- Identify the teacher with the highest number of classes taught.
+
+SELECT
+    teacher_id,
+    COUNT(class_id) AS number_of_classes
+FROM
+    Classes
+GROUP BY
+    teacher_id
+ORDER BY
+    number_of_classes DESC
+LIMIT 1;
+
 -- Calculate the average number of students per class for each teacher.
 
 SELECT
@@ -99,6 +118,29 @@ FROM
 ) AS class_data
 GROUP BY
     teacher_id;
+
+
+
+
+### Task 2: Teacher Analysis
+
+#### 2. Teacher with the Highest Number of Classes Taught
+
+This report helps in understanding which teacher has the highest teaching load.
+
+```sql
+-- Identify the teacher with the highest number of classes taught.
+
+SELECT
+    teacher_id,
+    COUNT(class_id) AS number_of_classes
+FROM
+    Classes
+GROUP BY
+    teacher_id
+ORDER BY
+    number_of_classes DESC
+LIMIT 1;
 
 
 
