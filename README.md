@@ -57,7 +57,7 @@ The database includes the following tables:
 
 2. **Top 5 Students with the Highest Average Grades**
 
-  
+```sql
 -- Find the top 5 students with the highest average grades.
 -- This report helps in identifying the top-performing students based on their average grades.
 
@@ -72,33 +72,14 @@ ORDER BY
     average_grade DESC
 LIMIT 5;
 
-
+````
 ## Task 2: Teacher Analysis
 
 ### 1. Average Number of Students per Class for Each Teacher
 
 This report helps in evaluating the teacher's class sizes and teaching load.
 
-### Task 2: Teacher Analysis
-
-#### 2. Teacher with the Highest Number of Classes Taught
-
-This report helps in understanding which teacher has the highest teaching load.
-
 ```sql
--- Identify the teacher with the highest number of classes taught.
-
-SELECT
-    teacher_id,
-    COUNT(class_id) AS number_of_classes
-FROM
-    Classes
-GROUP BY
-    teacher_id
-ORDER BY
-    number_of_classes DESC
-LIMIT 1;
-
 -- Calculate the average number of students per class for each teacher.
 
 SELECT
@@ -119,14 +100,10 @@ FROM
 GROUP BY
     teacher_id;
 
-
-
-
+````
 ### Task 2: Teacher Analysis
 
 #### 2. Teacher with the Highest Number of Classes Taught
-
-This report helps in understanding which teacher has the highest teaching load.
 
 ```sql
 -- Identify the teacher with the highest number of classes taught.
@@ -141,6 +118,95 @@ GROUP BY
 ORDER BY
     number_of_classes DESC
 LIMIT 1;
+
+```
+### Task 3: Class Performance
+
+1. **Average Grade for Each Class**
+
+   This report helps in assessing the performance of each class.
+
+   ```sql
+   -- Calculate the average grade for each class.
+
+   SELECT
+       class_id,
+       AVG(grade) AS average_grade
+   FROM
+       Grades
+   GROUP BY
+       class_id;
+
+   ### Classes Where the Average Grade is Below 70
+
+This report helps in identifying classes that may need additional support or intervention.
+
+```sql
+-- Find classes where the average grade is below 70.
+
+SELECT
+    class_id,
+    AVG(grade) AS average_grade
+FROM
+    Grades
+GROUP BY
+    class_id
+HAVING
+    AVG(grade) < 70;
+
+
+```
+## Task 4: Enrollment Trends
+
+### Total Number of Enrollments for Each Month in 2023
+
+This report helps in analyzing enrollment trends over the months.
+
+```sql
+-- Calculate the total number of enrollments for each month in 2023.
+
+SELECT
+    EXTRACT(MONTH FROM enrollment_date) AS month,
+    COUNT(student_id) AS total_enrollments
+FROM
+    Enrolments
+WHERE
+    EXTRACT(YEAR FROM enrollment_date) = 2023
+GROUP BY
+    month
+ORDER BY
+    month;
+
+
+```
+### Students Enrolled in More Than 5 Classes
+
+This report helps in understanding the workload of students and possible scheduling issues.
+
+```sql
+-- Identify students enrolled in more than 5 classes.
+
+SELECT
+    student_id,
+    COUNT(class_id) AS number_of_classes
+FROM
+    Enrolments
+GROUP BY
+    student_id
+HAVING
+    COUNT(class_id) > 5;
+
+```
+## Conclusion
+
+This project provides a comprehensive analysis of the school district's data, revealing valuable insights into various aspects of the educational environment:
+
+- **Student Insights**: Identified top-performing students and analyzed enrollment distribution across different grades.
+- **Teacher Analysis**: Evaluated teachers' class sizes and teaching loads, and identified the teacher with the highest number of classes taught.
+- **Class Performance**: Assessed the performance of classes based on average grades and identified classes that may need additional support.
+- **Enrollment Trends**: Analyzed enrollment trends over the months of 2023 and identified students enrolled in more than 5 classes.
+
+These findings can be leveraged to make data-driven decisions aimed at improving educational outcomes, optimizing class sizes, managing teacher workloads, and addressing areas where students may need additional support.
 
 
 
