@@ -1,3 +1,18 @@
+school-district-performance-analysis/
+│
+├── README.md
+└── sql_queries/
+    ├── student_insights_1.sql
+    ├── student_insights_2.sql
+    ├── teacher_analysis_1.sql
+    ├── teacher_analysis_2.sql
+    ├── class_performance_1.sql
+    ├── class_performance_2.sql
+    ├── enrolment_trends_1.sql
+    ├── enrolment_trends_2.sql
+
+
+
 # school-district-sql-project
 SQL Project to analyze student performance and educational outcomes for a school district.
 
